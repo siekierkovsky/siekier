@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
-<body ng-app="myApp">
-        <h1>JSON</h1>
-        <ul ng-controller="myCtrl">
-            <li ng-repeat="result in fakeData">
-                {{result.title.$t}}
+<body ng-app="myApp" ng-controller="myCtrl" ng-cloak>
+    
+        <h1>FIREBASE</h1>
+
+        <form ng-submit="addItem(newItemText)">
+          <input type="text" ng-model="newItemText"/>
+        </form>
+        
+        <ul>
+            <li ng-repeat="(id, item) in items">
+                {{item.text}}
+                
+                <a href="#" ng-click="updateItem(id)" class="navbar-link">Update
+                <input type="text" ng-model="newItemText" ng-blur="updateItem(id)"/></a>
+                <a href="#" ng-click="removeItem(id)" class="navbar-link">Remove</a>
+            
             </li>
+            
         </ul>
+        
+
+        
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
+    <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
+
