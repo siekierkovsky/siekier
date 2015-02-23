@@ -1,6 +1,6 @@
-angular.module('Eggly', [
+angular.module('Eggly', ['firebase'
 
-])
+]).constant('FIREBASE_URI','https://siekiera.firebaseio.com/')
   .controller('MainCtrl', function ($scope) {
       $scope.categories = [
           {"id": 0, "name": "Development"},
