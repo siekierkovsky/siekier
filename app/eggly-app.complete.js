@@ -3,7 +3,7 @@ angular.module('Eggly', ['firebase',
   'ui.router',
   'categories',
   'bookmarks'
-]).constant('FIREBASE_URI', 'https://siekiera.firebaseio.com/')
+]).constant('FIREBASE_URI','siekiera.firebaseio.com')
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('eggly', {
