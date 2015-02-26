@@ -1,0 +1,9 @@
+{
+  "firebase": "siekiera",
+  "public": "index.finish.html",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
