@@ -1,4 +1,4 @@
-angular.module('Eggly', ['firebase'
+angular.module('Eggly', ['firebase',
   'ngAnimate',
   'ui.router',
   'categories',

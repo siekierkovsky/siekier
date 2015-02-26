@@ -1,7 +1,7 @@
 angular.module('Eggly', ['firebase'
 
 ]).constant('FIREBASE_URI','https://siekiera.firebaseio.com/')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope,ItemFactory) {
       $scope.categories = [
           {"id": 0, "name": "Development"},
           {"id": 1, "name": "Design"},

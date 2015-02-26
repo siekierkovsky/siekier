@@ -1,7 +1,8 @@
-angular.module('Eggly', ["firebase"
+angular.module('Eggly', ['firebase'
 
 ]).constant('FIREBASE_URI','https://siekiera.firebaseio.com/')
     .controller('MainCtrl', function ($scope,ItemFactory) {
+        $scope.categories = ItemFactory.getCategories();
         $scope.categories = [
             {"id": 0, "name": "Development"},
             {"id": 1, "name": "Design"},
@@ -9,17 +10,7 @@ angular.module('Eggly', ["firebase"
             {"id": 3, "name": "Humor"}
         ];
 
-        $scope.bookmarks = [
-            {"id": 0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
-            {"id": 1, "title": "Egghead.io", "url": "http://angularjs.org", "category": "Development" },
-            {"id": 2, "title": "A List Apart", "url": "http://alistapart.com/", "category": "Design" },
-            {"id": 3, "title": "One Page Love", "url": "http://onepagelove.com/", "category": "Design" },
-            {"id": 4, "title": "MobilityWOD", "url": "http://www.mobilitywod.com/", "category": "Exercise" },
-            {"id": 5, "title": "Robb Wolf", "url": "http://robbwolf.com/", "category": "Exercise" },
-            {"id": 6, "title": "Senor Gif", "url": "http://memebase.cheezburger.com/senorgif", "category": "Humor" },
-            {"id": 7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
-            {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
-        ];
+        $scope.bookmarks = ItemFactory.getBookmarks();
 
         $scope.isCreating = false;
         $scope.isEditing = false;
@@ -64,31 +55,20 @@ angular.module('Eggly', ["firebase"
         //-------------------------------------------------------------------------------------------------
         function createBookmark(bookmark) {
             bookmark.id = $scope.bookmarks.length;
-            $scope.bookmarks.push(bookmark);
+            ItemFactory.addBookmark(bookmark);
 
             resetCreateForm();
         }
 
         function updateBookmark(bookmark) {
-            var index = _.findIndex($scope.bookmarks, function (b) {
-                return b.id == bookmark.id
-            });
-            $scope.bookmarks[index] = bookmark;
+            ItemFactory.updateBookmark(bookmark);
 
             $scope.editedBookmark = null;
             $scope.isEditing = false;
         }
         
         function removeBookmark(bookmark){
-      
-        var index = _.findIndex($scope.bookmarks, function (b) {
-                return b.id == bookmark.id
-         });
-        
-        
-        if(index > -1){
-           $scope.bookmarks.splice(index,1);
-        }
+            ItemFactory.removeBookmark(bookmark);
       
         }
 
